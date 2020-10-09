@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UI Engineer Coding Exercise</title>
+<style>
+
+.flex-container {
+display: flex;
+flex-direction: row;
+background-color: #cccccc;
+width: 50%;
+}
+.topborder{
+border-top: 3px solid #999;
+}
+.flex-container > div {
+width: 100px;
+margin: 10px;
+text-align: center;
+line-height: 75px;
+font-size: 30px;
+}
+#c1{background-color: #000000;color:#ffffff;}
+#c2{background-color: #2B8EAD;color:#ffffff;}
+#c3{background-color: #333333;color:#ffffff;}
+#c4{background-color: #6F98A8;color:#ffffff;}
+#c5{background-color: #FFFFFF;color:#000000;}
+#c6{background-color: #BFBFBF;color:#ffffff;}
+#c7{background-color: #EFEFEF;color:#000000;}
+#c8{background-color: #2F454E;color:#ffffff;}
+#c9{background-color: #72C3DC;color:#ffffff;}
+#shuffle,#sort{
+width: 60px !important;
+}
+.s1,.s2{width:70px;background-color: #72C3DC;color:#ffffff; padding: 7px; border: none; cursor: pointer;border-radius: 4px;}
+#shuffle0,#sort0{ display: none; }
+#shuffle1,#sort1{ display: block; }
+.copy{ margin-top: 10px; text-align: right; width:600px; font-style: italic; font-size: 14px; }
+.calign{ margin-left: 20%; margin-bottom: 0; font-weight: normal; }
+@media (max-width:500px) {
+*{
+margin: 0;
+}
+.flex-container {
+flex-direction: column;
+width:100%;
+}
+.flex-container > div {
+width:95%;
+margin: 10px;
+text-align: center;
+line-height: 75px;
+font-size: 30px;
+}
+#shuffle1,#sort1{ display: none; }#shuffle0,#sort0{ display: block; }
+#shuffle0,#sort0{ display:inline-block; margin-bottom: 10px;margin-left: 10px; }
+#c1,#c2,#c3,#c4,#c5,#c6,#c7,#c8,#c9{
+background-color: #f1f1f1;color:#000000;
+}
+#c1{border-left:5px solid #000000;}
+#c2{border-left:5px solid #2B8EAD;}
+#c3{border-left:5px solid #333333;}
+#c4{border-left:5px solid #6F98A8;}
+#c5{border-left:5px solid #333333;}
+#c6{border-left:5px solid #BFBFBF;}
+#c7{border-left:5px solid #333675;}
+#c8{border-left:5px solid #2F454E;}
+#c9{border-left:5px solid #72C3DC;}
+.copy{ width: 100%;text-align:center; }
+.calign{ margin-left:0; margin-bottom:30px; font-weight: normal; background: #000000; text-align: center; color: #ffffff; padding: 10px }
+}
+.header{ margin: 20px; }
+.mobheader{ text-align: center; }
+</style>
+</head>
+<body>
+<h1 class="header">UI Engineer Coding Exercise</h1>
+<h3 class="calign">Shuffle and Sort</h3>
+<div class="mobheader">
+  <div id="shuffle0"><button class="s1" onclick="shufflevalues()">Shuffle</button></div>  
+  <div id="sort0"><button class="s2" onclick="sortdesc()">Sort</button></div>
+</div>
+<div class="flex-container topborder">
+  <div id="c1">1</div>
+  <div id="c2">2</div>
+  <div id="c3">3</div>
+  <div id="shuffle1"><button class="s1" onclick="shufflevalues()">Shuffle</button></div>  
+  <div id="sort1"><button class="s2" onclick="sortdesc()">Sort</button></div>
+</div>
+<div class="flex-container">
+  <div id="c4">4</div>
+  <div id="c5">5</div>
+  <div id="c6">6</div>  
+</div>
+<div class="flex-container">
+  <div id="c7">7</div>
+  <div id="c8">8</div>
+  <div id="c9">9</div>  
+</div>
+<div class="copy">Shuffle and sort by Prabagaran-G</div>
+
+<script language="javascript">
+  var cardarray = new Array(
+    document.getElementById('c1'),
+    document.getElementById('c2'),
+    document.getElementById('c3'),
+    document.getElementById('c4'),
+    document.getElementById('c5'),
+    document.getElementById('c6'),
+    document.getElementById('c7'),
+    document.getElementById('c8'),
+    document.getElementById('c9'),
+    );
+var numarr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var descarr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+ function shufflevalues() {
+var shufflearr = shuffle(numarr);
+  for(var i=0;i<cardarray.length;i++){
+    cardarray[i].innerHTML= shufflearr[i];
+    }
+  }
+
+function sortdesc() {
+  for(var j=0;j<cardarray.length;j++){
+    cardarray[j].innerHTML= descarr[j];
+    }
+  }
+
+
+function shuffle(arr) {
+  var ctr = arr.length;
+  var temp;
+  var index;
+  while (ctr>0) {
+      index = Math.floor(Math.random() *ctr);
+      ctr--;
+      temp = arr[ctr];
+      arr[ctr] = arr[index];
+      arr[index] = temp;
+  }
+  return arr;
+}
+
+
+
+</script>
+</body>
+</html>
